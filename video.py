@@ -1,0 +1,28 @@
+# Импорт модулей
+from moviepy.editor import VideoFileClip, clips_array
+
+# Настройки
+video_paths = ['/content/logo_video_0.mp4', '/content/logo_video_1.mp4', '/content/logo_video_2.mp4']  # Замените на ваши файлы
+output_path = 'merged_video.mp4'
+
+# Загружаем видеофайлы
+video_clips = [VideoFileClip(video) for video in video_paths]
+
+target_size = (640, 360)  # Задайте нужный размер
+resized_clips = [clip.resize(target_size) for clip in video_clips]
+
+# Объединяем видео в один кадр (в ряд)
+final_clip = clips_array([resized_clips])
+
+# Сохраняем итоговое видео
+final_clip.write_videofile(output_path, codec='libx264', audio_codec='aac')
+
+# Освобождаем ресурсы
+for clip in resized_clips:
+    clip.close()
+final_clip.close()
+
+print(f'Итоговое видео сохранено как {output_path}')
+
+if __name__ == '__main__':
+    moviepy.editor(main())
