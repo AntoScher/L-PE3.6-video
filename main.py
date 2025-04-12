@@ -7,9 +7,9 @@ load_dotenv()
 
 # Настройки
 PIXABAY_API_KEY = os.getenv("PIXABAY_API_KEY")
-search_query = 'athlete cyclists'
+search_query = 'scuba diver'
 per_page = 3
-logo_path = 'ironeagle.jpg'
+logo_path = 'ironeagl(40x40).png'
 
 
 def download_pixabay_videos(query, per_page=3):
